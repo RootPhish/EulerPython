@@ -8,20 +8,13 @@ def isprimenumber(value):
             return False
     return True
 
-def primenumbersupto(value):
-    result = []
-    for i in range(2, value):
-        if isprimenumber(i):
-            result.append(i)
-    return result
-
 def findprimefactors(value):
     result = []
-    primes = primenumbersupto(floor(sqrt(value)))
-    for prime in primes:
-        while value % prime == 0:
-            result.append(prime)
-            value = value / prime
+    for i in range(2, floor(sqrt(value))):
+        if isprimenumber(i):
+            while value % i == 0:
+                result.append(i)
+                value = value / i
     return result
 
 print(findprimefactors(600851475143))
